@@ -7,7 +7,6 @@ const konek_db = new Pool({
     host : process.env.HOST,
     database : process.env.USER,
     port : process.env.PORT_DB,
-
 })
 
 export default konek_db
