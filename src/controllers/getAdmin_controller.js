@@ -1,8 +1,20 @@
 import konek_db from "../models/connect_database.js"
 import Query_GetAdmin from '../query/getAdmin_query.js'
-const {get_admin} = Query_GetAdmin
+const {get_admin,get_admins} = Query_GetAdmin
 
 class Get_Admin {
+
+
+    static GetAdmins (req,res) {
+        konek_db.query(get_admins(),(err,result) => {
+            if(err?.message) return res.status(500).json({Kesalahan_Server_getadmins:err }) 
+            if(result.rowCount > 0) {
+                res.status(200).json(result.rows)
+            }else {
+                res.status(400).json({msg:"ada kesalahan saat ambil data"})
+            }
+        })
+    } 
 
     static GetAdmin (req,res) {
         const {username} = req.body
