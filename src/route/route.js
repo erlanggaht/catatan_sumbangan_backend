@@ -25,7 +25,7 @@ router.get('/getdata',GetData)
 router.get('/getdata_last',GetData_Last)
 router.get('/getlaporan_uid/:uid',getLaporan_uid)
 router.post('/add_data',AddData)
-router.get('/get_admins',GetAdmins)
+router.get('/get_admins',jwt_auth,GetAdmins)
 router.post('/get_admin',jwt_auth,GetAdmin)
 router.delete('/delete_data',delete_data)
 
